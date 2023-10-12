@@ -1,6 +1,5 @@
 /*
 We're constantly improving the code you see. 
-Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcNg&d=1152665201300829
 */
 
 import React from "react";
@@ -8,7 +7,7 @@ import React from "react";
 const ControlHandle = ({ state, type, className, textClassName, text = "0%" }) => {
   return (
     <div
-      className={`z-10 w-[24px] h-[24px] rounded-[12px] bg-white ${["text", "tooltip"].includes(type) ? "relative" : ""
+      className={` w-[24px] h-[24px] rounded-[12px] bg-white ${["text", "tooltip"].includes(type) ? "relative" : ""
         } ${className}`}
     >
       {["text", "tooltip"].includes(type) && (

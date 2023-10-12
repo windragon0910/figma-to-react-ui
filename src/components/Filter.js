@@ -14,14 +14,14 @@ const Filter = () => {
     <div className="mr-8 pt-4 mt-2">
       <SearchBar />
       <div className='flex justify-between items-center mt-4'>
-        <div className='rounded-lg border-[2px] border-gray-300 shadow-sm shadow-gray-100 flex justify-center items-center bg-white px-2 py-1 font-semibold text-gray-700'>
-          <img src={FiltersIcon} />
+        <button className='rounded-lg border-[2px] border-gray-300 shadow-sm shadow-gray-100 flex justify-center items-center bg-white px-2 py-1 font-semibold text-gray-700'>
+          <img src={FiltersIcon} alt=''/>
           <p className='pl-2'>Filters</p>
-        </div>
-        <div className='rounded-lg border-[2px] border-gray-300 shadow-sm shadow-gray-100 flex justify-center items-center bg-white px-2 py-1 font-semibold text-gray-700'>
+        </button>
+        <button className='rounded-lg border-[2px] border-gray-300 shadow-sm shadow-gray-100 flex justify-center items-center bg-white px-2 py-1 font-semibold text-gray-700'>
           <p className='pr-2'>Clear App</p>
-          <img src={CloseIcon} />
-        </div>
+          <img src={CloseIcon} alt=''/>
+        </button>
       </div>
 
       {/* Card Type */}

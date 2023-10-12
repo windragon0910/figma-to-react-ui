@@ -1,33 +1,87 @@
-import React from "react";
-import ControlHandle from "./ControlHandle";
+import React, { Component, useState } from "react";
+import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
+import { SliderRail, Handle, Track, Tick } from "./slider_components"; // example render components - source below
 
-const Slider = () => {
-  return (
-    <div className="w-[325px] h-[35px] rounded-[8px] relative">
-      <div className="relative h-[8px] top-[8px] bg-gray-200 rounded-[4px]">
-        <div className="relative w-[162px] h-[8px] left-[81px]">
-          <div className="relative w-[187px] h-[24px] top-[-8px] left-[-12px]">
-            <div className="absolute w-[163px] h-[8px] top-[8px] left-[12px] bg-blue-500 rounded-[4px]" />
-            <ControlHandle
-              className="!absolute !left-0 !top-0 "
-              state="default"
-              text="06:00AM"
-              textClassName="!tracking-[0] !text-[12px] ![font-style:unset] !font-medium ![font-family:'Inter',Helvetica] !left-[-15px] !leading-[24px]"
-              type="text"
-            />
-            <ControlHandle
-              className="!absolute !left-[163px] !top-0"
-              state="default"
-              text="10:00AM"
-              textClassName="!tracking-[0] !text-[12px] ![font-style:unset] !font-medium ![font-family:'Inter',Helvetica] !left-[-14px] !leading-[24px]"
-              type="text"
-            />
-          </div>
-          <div className="absolute bg-[#7F56D9] h-2 top-0 left-0 w-full" ></div>
-        </div>
-      </div>
-    </div>
-  );
+const sliderStyle = {
+  position: "relative",
+  width: "100%"
 };
 
-export default Slider;
+const domain = [0, 86400];
+const defaultValues = [0, 86400];
+
+
+const CustomSlider = () => {
+  const [state, setState] = useState({
+    values: defaultValues.slice(),
+    update: defaultValues.slice()
+  });
+
+  const onChange = () => {
+
+  }
+
+  const onUpdate = () => {
+
+  }
+
+  
+  return (
+      <div className="w-full px-4">
+        <div
+          style={{
+            marginBottom: "30px",
+            marginLeft: "0",
+            display: "flex",
+            justifyContent: "space-between"
+          }}
+        >
+        </div>
+
+        <Slider
+          mode={2}
+          step={1}
+          domain={domain}
+          rootStyle={sliderStyle}
+          onUpdate={onUpdate}
+          onChange={onChange}
+          values={state.values}
+        >
+          <Rail>
+            {({ getRailProps }) => <SliderRail getRailProps={getRailProps} />}
+          </Rail>
+          <Handles>
+            {({ handles, getHandleProps }) => (
+              <div className="slider-handles">
+                {handles.map((handle) => (
+                  <Handle
+                    key={handle.id}
+                    handle={handle}
+                    domain={domain}
+                    getHandleProps={getHandleProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Handles>
+          <Tracks left={false} right={false}>
+            {({ tracks, getTrackProps }) => (
+              <div className="slider-tracks">
+                {tracks.map(({ id, source, target }) => (
+                  <Track
+                    key={id}
+                    source={source}
+                    target={target}
+                    getTrackProps={getTrackProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Tracks>
+        </Slider>
+      </div>
+    );
+}
+
+
+export default CustomSlider;
